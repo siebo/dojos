@@ -20,15 +20,15 @@ class DojoListViewTests(TestCase):
     
     def test_dojos_in_the_context(self): 
       
-      client = Client()
-      response = client.get('/')
+        client = Client()
+        response = client.get('/')
       
-      self.assertEquals(list(response.context['object_list']), [])
+        self.assertEquals(list(response.context['object_list']), [])
       
-      Dojo.objects.create(name='Aikido Amsterdam')
-      response = client.get('/')
-      self.assertEquals(response.context['object_list'].count(), 1)
-      
+        Dojo.objects.create(name='Aikido Amsterdam')
+        response = client.get('/')
+        self.assertEquals(response.context['object_list'].count(), 1)
+
     def test_dojos_in_the_context_request_factory(self):
   
         factory = RequestFactory()
